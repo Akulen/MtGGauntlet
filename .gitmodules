@@ -1,0 +1,3 @@
+[submodule "tribute"]
+	path = tribute
+	url = git@github.com:zurb/tribute.git

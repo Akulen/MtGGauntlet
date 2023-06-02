@@ -1,0 +1,168 @@
+<div class="row">
+    <div id="decks" class="accordion" style="margin-bottom: 10px;">
+    </div>
+</div>
+
+<div class="row" style="margin-bottom: 10px;">
+    <div class="d-grip gap-2 col-6">
+        <button type="button" title="Add deck" class="btn btn-primary" style="width: auto;" onclick="addDeck()"><i class="fa-solid fa-plus"></i></button>
+        <!-- TODO: Import from mtgtop8 -->
+    </div>
+
+    <div class="d-grip gap-2 col-6 d-md-flex justify-content-md-end">
+        <input type='file' id="getFile" style="display:none">
+        <button title="Upload gauntlet" class="btn btn-warning" style="width: auto;" onclick="document.getElementById('getFile').click()"><i class="fa-solid fa-upload"></i></button>
+        <button type="button" title="Download gauntlet" class="btn btn-danger" style="width: auto;" onclick="downloadJSON(makeJSON())"><i class="fa-solid fa-download"></i></button>
+        <button type="button" title="Generate gauntlet" class="btn btn-success" style="width: auto;" onclick="genGauntlet()"><i class="fa-solid fa-play"></i></button>
+        <button type="button" title="Print gauntlet" class="btn btn-secondary" style="width: auto;" onclick="printGauntlet()"><i class="fa-solid fa-print"></i></button>
+    </div>
+</div>
+
+<div id="gauntletContainer" class"row">
+    <style type="text/css" scoped>
+        div {
+            line-height: initial;
+            font-family: initial;
+        }
+
+        .mtgCard {
+            table-layout: fixed;
+            display: inline-block;
+            text-overflow: ellipsis;
+            width: 57mm;
+            height: 83mm;
+            border: 1px black solid;
+            margin: 0.5mm;
+        }
+
+        .mtgCard table {
+            width: 100%;
+            height: 100%;
+            font-size: 3mm; /*11px;*/
+            padding: 0; 
+            border-spacing: 0;
+        }
+
+        tbody.mtgCard0 {
+            background-color: #B2F1BA;
+        }
+
+        tbody.mtgCard1 {
+            background-color: #C3B5EB;
+        }
+
+        tbody.mtgCard2 {
+            background-color: #FFF4BC;
+        }
+
+        tbody.mtgCard3 {
+            background-color: #FFBFBC;
+        }
+
+        tbody.mtgCard4 {
+            background-color: #83EBE4;
+        }
+
+        .mtgCardTypeRow.borderBottom {
+            border-bottom: 1px dotted grey;
+        }
+
+        tbody.mtgCard0 .mtgCardTypeRow {
+            background-color: #B2F1BA;
+        }
+
+        tbody.mtgCard1 .mtgCardTypeRow {
+            background-color: #C3B5EB;
+        }
+
+        tbody.mtgCard2 .mtgCardTypeRow {
+            background-color: #FFF4BC;
+        }
+
+        tbody.mtgCard3 .mtgCardTypeRow {
+            background-color: #FFBFBC;
+        }
+
+        tbody.mtgCard4 .mtgCardTypeRow {
+            background-color: #83EBE4;
+        }
+
+        .mtgCard td {
+            padding: 1px 1px 1px 1mm;
+        }
+
+        div.sideboard table {
+            border-top: 3px black dashed;
+        }
+
+        .mtgCardTitleRow {
+            text-align: center;
+            /*white-space:nowrap;*/
+        }
+
+        .mtgCardTitleRow td {
+            padding: 1px;
+        }
+
+        .mtgCardNameRow {
+            height: 3.5mm;
+            /*white-space:nowrap;*/
+        }
+
+        .deckNumber {
+            float: left;
+            margin-right: 1mm;
+            /*border-radius: 50%;
+
+            width: 10px;
+            height: 10px;
+            padding: 1px;
+
+            background: #fff;
+            border: 2px solid #666;
+            color: #666;
+            text-align: center;*/
+        }
+
+        .mtgCardTitle {
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .mtgCardName {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .manaCost {
+            float: right;
+        }
+
+        .mtgCardSeparator {
+            height:1px;
+            font-size: 1px;
+            padding: 0;
+        }
+
+        .mtgCardSeparator hr{
+            border: 0;
+            border-top: 1px black solid;
+            background: none;
+        }
+
+        .mtgCardTypeRow {
+            height: 3.5mm;
+            /*white-space:nowrap;*/
+        }
+
+        .mtgCardText td {
+            text-align: justify;
+        }
+
+        .powerToughness {
+            float: right;
+        }
+    </style>
+    <div id="gauntlet">
+    </div>
+</div>
