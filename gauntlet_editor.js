@@ -359,6 +359,7 @@ function prettyText(cost) {
     cost = cost.replaceAll('{X}', symbolPath('mana-x'));
     cost = cost.replaceAll('{Y}', symbolPath('mana-y'));
     cost = cost.replaceAll('{Z}', symbolPath('mana-z'));
+    cost = cost.replaceAll('{C}', symbolPath('mana-c'));
     cost = cost.replaceAll('{W}', symbolPath('mana-w'));
     cost = cost.replaceAll('{U}', symbolPath('mana-u'));
     cost = cost.replaceAll('{B}', symbolPath('mana-b'));
@@ -389,6 +390,7 @@ function prettyText(cost) {
     cost = cost.replaceAll('{+1/+1}', symbolPath('counter-plus'));
     cost = cost.replaceAll('{-1/-1}', symbolPath('counter-minus'));
     cost = cost.replaceAll('{charge}', symbolPath('counter-charge'));
+    cost = cost.replaceAll('{E}', symbolPath('counter-energy'));
     cost = cost.replaceAll('{any}', symbolPath('mana-any'));
     return cost;
 }
@@ -934,6 +936,7 @@ let cardData = null;
 fetch(`${dataPath}/AllCards.json`)
     .then((response) => response.json())
     .then(function(json) {
+        console.log('plop');
         cardData = json;
         const values = [];
         Object.keys(cardData).forEach(function(key) {
