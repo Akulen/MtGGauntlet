@@ -936,7 +936,6 @@ let cardData = null;
 fetch(`${dataPath}/AllCards.json`)
     .then((response) => response.json())
     .then(function(json) {
-        console.log('plop');
         cardData = json;
         const values = [];
         Object.keys(cardData).forEach(function(key) {
